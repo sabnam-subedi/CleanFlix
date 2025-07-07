@@ -3,6 +3,8 @@
 import pandas as pd
 from pandas.api.types import CategoricalDtype
 import numpy as np
+import os
+
 
 # Load the dataset from raw folder
 df=pd.read_csv("../data/raw/netflix_titles.csv")
@@ -37,13 +39,18 @@ df['country']=df['country'].fillna('Not Available')
 
 # errors='coerce' will replace any value having incorrect formatting with missing datetime
 
-df['date_added'] = pd.to_datetime(df['date_added'], errors='coerce')
-
 #timestamp= pandas’ equivalent of Python’s datetime.datetime
 
-df['date_added'] = df['date_added'].fillna(pd.Timestamp('2000-01-01'))
 
-df['rating']=df['rating'].fillna('Not rated')
+
+
+df['date_added']=df['date_added'].fillna('Not Mentioned')
+
+
+df['rating']=df['rating'].fillna('not rated')
+
+print(df[df['rating'].isna()]['rating'])
+
 
 #checking the information of missing duration 
 
@@ -70,7 +77,7 @@ df.loc[(df['type'] == 'Movie') & (df['duration_time'].isna()), 'duration_time'] 
 
 df.loc[(df['type'] == 'Movie') & (df['duration_unit'].isna()), 'duration_unit'] = 'min'
 
-#combininb different data types for duration
+#combining different data types for duration
 
 df['duration'] = df['duration_time'].astype(int).astype(str) + ' ' + df['duration_unit']
 
@@ -83,8 +90,17 @@ for col in text_columns:
     df[col] = df[col].str.strip().str.lower()
 
 #unique values for rating and country
+invalid_ratings = ['74 min', '84 min', '66 min']
+df = df[~df['rating'].isin(invalid_ratings)]
+rating_map = {
+    'nr': 'not rated',
+    'ur': 'not rated',
+    'not rated': 'not rated',  # keep this one
+    'tv-y7-fv': 'tv-y7-fv'     # optional:  merge this with 'tv-y7' 
+}
+df['rating'] = df['rating'].replace(rating_map)
 
-df['rating'].unique()
+print(df['rating'].unique())
 
 df['country'].value_counts()
 
@@ -93,13 +109,24 @@ df['country'].value_counts()
 df['rating'] = df['rating'].astype('category')
 
 #arranging rating in customized order
-rating_order = ['g', 'pg', 'pg-13', 'r', 'nc-17', 'tv-14', 'tv-ma', 'not rated']
+rating_order =rating_order =['pg-13','tv-ma', 'pg','tv-14','tv-pg' , 'tv-y' , 'tv-y7',  'r' , 'tv-g' , 'g' ,  'nc-17' , 'not rated',  'tv-y7-fv']
 rating_dtype = CategoricalDtype(categories=rating_order, ordered=True)
+
 
 # assigning the order to the column
 df['rating'] = df['rating'].astype(rating_dtype)
+missing = df.isnull().sum()
+print(missing)
+df_cleaned=df
+
+# setting relative path to cleaned folder
+output_path = os.path.join('..', 'data', 'cleaned', 'netflix_cleaned.xlsx')
+
+# Saving the DataFrame as an Excel file
+df_cleaned.to_excel(output_path, index=False)
 
 
+# print(f"File saved to: {output_path}")
 
 
 
