@@ -76,10 +76,14 @@ rating_dtype = CategoricalDtype(categories=rating_order, ordered=True)
 df['rating'] = df['rating'].astype(rating_dtype)
 missing = df.isnull().sum()
 print(missing)
+
+
 df_cleaned=df
+df_cleaned.insert(0, 'S.No', range(1, 1 + len(df))) 
+print(df_cleaned.head(10))  # ✅ Now prints with S.No
 
+# Save to Excel
 output_path = os.path.join('..', 'data', 'cleaned', 'netflix_cleaned.xlsx')
-
 df_cleaned.to_excel(output_path, index=False)
 
 

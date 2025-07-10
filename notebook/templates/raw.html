@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Raw Netflix Data{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-secondary text-center">Raw Netflix Data</h2>
+
+<div class="table-responsive">
+    {{ table | safe }}
+</div>
+
+<div class="text-center mt-4">
+    <a href="/" class="btn btn-outline-primary">Back to Home</a>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<!-- jQuery + DataTables -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('table').DataTable({
+            "pageLength": 10,
+            "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+            "responsive": true
+        });
+    });
+</script>
+{% endblock %}

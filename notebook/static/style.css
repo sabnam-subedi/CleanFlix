@@ -1,0 +1,60 @@
+/* static/style.css */
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    background-color: #f0f8ff;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 2s ease-in;
+}
+
+h1 {
+    color: #030303;
+    font-size: 2.5rem;
+    text-align: center;
+    padding: 0 20px;
+    line-height: 1.4;
+}
+.table-responsive {
+    overflow-x: auto;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+table.dataTable {
+    width: 100% !important;
+    word-wrap: break-word;
+}
+
+td {
+    word-break: break-word;
+    /* max-width: 200px; */
+    
+.scrollable-row {
+    overflow-x: auto;
+    white-space: nowrap;
+    display: block;
+    max-width: 100%;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
