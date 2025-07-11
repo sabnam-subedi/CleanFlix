@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 body {
-    background-color: #f0f8ff;
+    background-color: #ffffff;
     font-family: 'Poppins', sans-serif;
     height: 100vh;
     margin: 0;
@@ -34,10 +34,10 @@ h1 {
 }
 
 /* Animation */
-@keyframes fadeIn {
+/* @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
-}
+} */
 table.dataTable {
     width: 100% !important;
     word-wrap: break-word;
@@ -46,6 +46,7 @@ table.dataTable {
 td {
     word-break: break-word;
     /* max-width: 200px; */
+}
     
 .scrollable-row {
     overflow-x: auto;
@@ -57,4 +58,9 @@ td {
     padding: 10px;
     background-color: #ffffff;
     border-radius: 8px;
+}
+
+.carousel-indicators {
+    margin-top: 36px;
+    height: 0px;
 }

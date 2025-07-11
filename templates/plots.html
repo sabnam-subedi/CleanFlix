@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Analysis of Datasets{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-secondary text-center">Analysis of Datasets</h2>
+
+<!-- Define images and their captions together -->
+{% set plots = [
+  {'filename': 'country_pie_chart.png', 'caption': "Origin of Movies & TV Shows by Country"},
+  {'filename': 'rating_by_country.png', 'caption': "Ratings Distribution by Top Countries"},
+  {'filename': 'type_bar.png', 'caption': "Distribution of Movies and TV Shows"},
+  {'filename': 'release_trend.png', 'caption': "Netflix Release Trend Over the Years"},
+  {'filename': 'avg_movie_duration.png', 'caption': "Average Movie Duration Over Time"}
+] %}
+
+<div id="carouselIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
+  <!-- Indicators -->
+  <div class="carousel-indicators">
+    {% for i in range(plots | length) %}
+    <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="{{ i }}"
+      class="{% if i == 0 %}active{% endif %}" aria-current="{% if i == 0 %}true{% endif %}"
+      aria-label="Slide {{ i + 1 }}" style="background-color: #b8b8b8;"></button>
+    {% endfor %}
+  </div>
+
+  <!-- Slides -->
+  <div class="carousel-inner">
+    {% for plot in plots %}
+    <div class="carousel-item {% if loop.first %}active{% endif %}">
+      <img src="{{ url_for('static', filename='plots/' ~ plot.filename) }}" class="d-block mx-auto img-fluid"
+        style="max-height: 500px;" alt="{{ plot.caption }}">
+      <!-- <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded px-2">
+        <h5>{{ plot.caption }}</h5>
+      </div> -->
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(100%);"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(100%);"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div class="text-center mt-4">
+  <a href="/" class="btn btn-outline-primary">Back to Home</a>
+</div>
+{% endblock %}
