@@ -57,7 +57,7 @@ CleanFlix is a project where Netflix data was obtained through the **Kaggle**, a
 
 ## Project Plot Screenshots
 
-![Screenshot 1](static\plots\avg_movie_duration.png)
+![Screenshot 1](static/plots/avg_movie_duration.png)
 
 <!-- *Line Graph* -->
 
@@ -65,7 +65,7 @@ _Line Graph:_ Average Movie Duration Over Time
 
 <br />
 
-![Screenshot 2](static\plots\country_pie_chart.png)
+![Screenshot 2](static/plots/country_pie_chart.png)
 
 <!-- *Pie Chart* -->
 
@@ -73,7 +73,7 @@ _Pie Chart:_ Origin of Movies & TV Shows by Country
 
 <br />
 
-![Screenshot 3](static\plots\rating_by_country.png)
+![Screenshot 3](static/plots/rating_by_country.png)
 
 <!-- *Multiple Bar Graph* -->
 
@@ -81,7 +81,7 @@ _Multiple Bar Graph:_ Ratings Distribution by Top Countries
 
 <br />
 
-![Screenshot 4](static\plots\release_trend.png)
+![Screenshot 4](static/plots/release_trend.png)
 
 <!-- *Caption: Line Graph* -->
 
@@ -89,7 +89,7 @@ _Line Graph:_ Netflix Release Trend Over the Years
 
 <br />
 
-![Screenshot 5](static\plots\type_bar.png)
+![Screenshot 5](static/plots/type_bar.png)
 
 <!-- *Caption: Bar Graph* -->
 
