@@ -16,11 +16,11 @@ CleanFlix is a project where Netflix data was obtained through the **Kaggle**, a
 1. Clone the repository and navigate to the project directory:
 
    ```shell
-   git clone https://github.com/sabnam-subedi/Data-cleaning-project.git
+   git clone https://github.com/sabnam-subedi/CleanFlix.git
    ```
 
    ```shell
-   cd Data-cleaning-project
+   cd CleanFlix
    ```
 
 2. Create and activate a virtual environment:
